@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+  api-test:
+    image: "api-test:111"
+    container_name: api-test
+    restart: unless-stopped
+    working_dir: /var/www/
+#    volumes:
+#      - ./:/var/www
+
+  nginx:
+    image: "nginx-api:111"
+    container_name: api-test-nginx
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d/
